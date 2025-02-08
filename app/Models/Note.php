@@ -8,4 +8,3 @@ class Note extends Model
 {
     //
 }
-e
