@@ -8,13 +8,16 @@
                 <div class="card-header">{{ __('Note') }}</div>
 
                 <div class="card-body">
+<form method="POST" action="{{ $isEdit? route('notes.edit', $note->id): route('notes.store')}}">
+
+    @csrf
 
 
                         <div class="row mb-3">
                             <label for="title" class="col-md-4 col-form-label text-md-end">{{ __('Title') }}</label>
 
                             <div class="col-md-6">
-                                <input id="title" type="text" name="title" class="form-control" value="{{ $note->title }}" required readonly>
+                                <input id="title" type="text" name="title" class="form-control"required >
                             </div>
                         </div>
 
@@ -22,16 +25,13 @@
                             <label for="description" class="col-md-4 col-form-label text-md-end">{{ __('Description') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" type="text" name="description" class="form-control" required readonly>{{ $note->description }}</textarea>
+                                <textarea id="description" type="text" name="description" class="form-control" required ></textarea>
                             </div>
                         </div>
 
-                        <form method="POST" action="{{ route('notes.destroy', $note->id)}}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit">Delete</button>
-                        </form>
+                        <button type="submit">{{ $isEdit? 'Update': 'Create' }}</button>
 
+</form>
                 </div>
             </div>
         </div>
