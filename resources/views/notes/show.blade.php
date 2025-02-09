@@ -1,29 +1,33 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Note') }}</div>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+                <div class="card-body">
 
-        <!-- Styles / Scripts -->
-        @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-            @vite(['resources/css/app.css', 'resources/js/app.js'])
-        @endif
-    </head>
-    <body class="font-sans antialiased dark:bg-black dark:text-white/50">
-       <div class="ml-4 mt-4">
-            <label for="">title</label>
-            <h4>{{ $note->title }}</h4>
 
-            <label for="">Description</label>
-            <p>{{ $note->description }}</p>
+                        <div class="row mb-3">
+                            <label for="title" class="col-md-4 col-form-label text-md-end">{{ __('Title') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="title" type="text" name="title" class="form-control" value="{{ $note->title }}" required readonly>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="description" class="col-md-4 col-form-label text-md-end">{{ __('Description') }}</label>
+
+                            <div class="col-md-6">
+                                <textarea id="description" type="text" name="description" class="form-control" required readonly>{{ $note->description }}</textarea>
+                            </div>
+                        </div>
+                </div>
+            </div>
         </div>
-    </body>
-</html>
-
-
+    </div>
+</div>
+@endsection
