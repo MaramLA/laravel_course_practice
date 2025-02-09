@@ -25,6 +25,13 @@
                                 <textarea id="description" type="text" name="description" class="form-control" required readonly>{{ $note->description }}</textarea>
                             </div>
                         </div>
+"
+                        <form method="POST" action="{{ route('notes.destroy', $note->id)}}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Delete</button>
+                        </form>
+
                 </div>
             </div>
         </div>
