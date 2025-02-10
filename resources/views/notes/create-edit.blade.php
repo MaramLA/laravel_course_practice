@@ -41,6 +41,20 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <l1abel for="description" class="col-md-4 col-form-label text-md-end">{{ __('Share With Others') }}</l1abel>
+
+                            <div class="col-md-6">
+                                <select name="share" id="share">
+                                    @foreach (App\Models\User::all()->except(Auth::id()) as $user){
+                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                    }
+
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
                         <button type="submit">{{ $isEdit? 'Update': 'Create' }}</button>
 
 </form>
